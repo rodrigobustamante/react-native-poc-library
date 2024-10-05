@@ -1,10 +1,16 @@
 {
-  "name": "awesomestorybook",
-  "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "react-native-poc-library",
+  "version": "0.0.1",
+  "main": "./lib/commonjs/index.js",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "start": "expo start",
+    "build": "rm -rf /dist && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -13,7 +19,9 @@
     "storybook-generate": "sb-rn-get-stories --config-path .ondevice",
     "storybook": "cross-env STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "cross-env STORYBOOK_ENABLED='true' expo start --ios",
-    "storybook:android": "cross-env STORYBOOK_ENABLED='true' expo start --android"
+    "storybook:android": "cross-env STORYBOOK_ENABLED='true' expo start --android",
+    "prepare": "bob build",
+    "release": "release-it"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.6.4",
@@ -34,6 +42,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.25.4",
+    "@release-it/conventional-changelog": "^1.1.0",
     "@chromatic-com/storybook": "^2.0.2",
     "@expo/metro-runtime": "~3.2.3",
     "@storybook/addon-actions": "^8.3.5",
@@ -53,10 +63,11 @@
     "@storybook/test": "^8.3.5",
     "@types/react": "~18.2.79",
     "babel-loader": "^8.2.3",
-    "@babel/preset-env": "^7.25.4",
     "babel-plugin-react-docgen-typescript": "^1.5.1",
     "babel-plugin-react-native-web": "^0.19.10",
     "cross-env": "^7.0.3",
+    "react-native-builder-bob": "^0.30.2",
+    "release-it": "^13.4.0",
     "storybook": "^8.3.5",
     "typescript": "~5.3.3"
   },
@@ -71,5 +82,40 @@
       "react-docgen-typescript": "2.2.2"
     }
   },
-  "private": true
+  "private": true,
+  "source": "./src/index.ts",
+  "module": "./lib/module/index.js",
+  "types": "./lib/typescript/commonjs/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/typescript/module/src/index.d.ts",
+        "default": "./lib/module/index.js"
+      },
+      "require": {
+        "types": "./lib/typescript/commonjs/src/index.d.ts",
+        "default": "./lib/commonjs/index.js"
+      }
+    }
+  },
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/*.stories.tsx"
+  ],
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }

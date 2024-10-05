@@ -6,7 +6,7 @@ export default ({ config }) => ({
   orientation: "portrait",
   icon: "./assets/icon.png",
   extra: {
-    storybookEnabled: process.env.STORYBOOK_ENABLED,
+    storybookEnabled: process.env?.STORYBOOK_ENABLED || true,
   },
   splash: {
     image: "./assets/splash.png",
