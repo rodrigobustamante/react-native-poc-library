@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "jsx": "react-native",
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -10,6 +10,7 @@
     "moduleSuffixes": [".ios", ".native", ".android", ""],
     "module": "esnext",
     "moduleResolution": "node",
+    "sourceMap": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
