@@ -1,8 +1,8 @@
 /** @type{import("@storybook/react-webpack5").StorybookConfig} */
 module.exports = {
   stories: [
-    "../components/**/*.stories.mdx",
-    "../components/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/components/**/*.stories.mdx",
+    "../src/components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
 
   addons: [
@@ -10,7 +10,7 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-react-native-web",
     "@storybook/addon-webpack5-compiler-babel",
-    "@chromatic-com/storybook"
+    "@chromatic-com/storybook",
   ],
 
   framework: {
@@ -21,6 +21,6 @@ module.exports = {
   docs: {},
 
   typescript: {
-    reactDocgen: "react-docgen-typescript"
-  }
+    reactDocgen: "react-docgen-typescript",
+  },
 };

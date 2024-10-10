@@ -1,4 +1,5 @@
 import React from "react";
+import { useTheme } from "@shopify/restyle";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 interface MyButtonProps {
@@ -7,8 +8,16 @@ interface MyButtonProps {
 }
 
 export const MyButton = ({ onPress, text }: MyButtonProps) => {
+  const theme = useTheme();
+
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      style={{
+        ...styles.container,
+        backgroundColor: theme.colors.cardPrimaryBackground,
+      }}
+      onPress={onPress}
+    >
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );

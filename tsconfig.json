@@ -6,8 +6,16 @@
     "allowUnusedLabels": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["esnext", "dom"],
-    "moduleSuffixes": [".ios", ".native", ".android", ""],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "moduleSuffixes": [
+      ".ios",
+      ".native",
+      ".android",
+      ""
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -22,5 +30,8 @@
     "strict": true,
     "target": "esnext"
   },
-  "exclude": ["lib/**/*"]
+  "exclude": [
+    "lib/**/*"
+  ],
+  "extends": "expo/tsconfig.base"
 }
