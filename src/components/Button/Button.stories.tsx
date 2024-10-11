@@ -28,17 +28,3 @@ export const Basic: Story = {
     onPress: action("onPress"),
   },
 };
-
-export const Dark: Story = {
-  args: {
-    onPress: action("onPress"),
-  },
-};
-
-Basic.parameters = {
-  theme: "light",
-};
-
-Dark.parameters = {
-  theme: "dark",
-};
