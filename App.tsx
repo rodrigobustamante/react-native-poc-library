@@ -1,11 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
+import { ThemeProvider } from "@shopify/restyle";
+import { core } from "./src/theme";
 
 function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <ThemeProvider theme={core}>
+      <View style={styles.container}>
+        <Text>Open up App.tsx to start working on your app!</Text>
+      </View>
+    </ThemeProvider>
   );
 }
 
