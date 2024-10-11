@@ -1,1 +1,1 @@
-export { core } from "./core";
+export { core, dark } from "./core";

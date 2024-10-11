@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "@shopify/restyle";
 import type { Preview } from "@storybook/react";
-import { core } from "../src/theme";
+import { core, dark } from "../src/theme";
 
 const preview: Preview = {
   parameters: {
@@ -14,11 +14,17 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story) => (
-      <ThemeProvider theme={core}>
-        <Story />
-      </ThemeProvider>
-    ),
+    (Story, context) => {
+      const { theme } = context.parameters;
+      const storyTheme = theme === "dark" ? dark : core;
+      console.log({ theme });
+
+      return (
+        <ThemeProvider theme={storyTheme}>
+          <Story />
+        </ThemeProvider>
+      );
+    },
   ],
   tags: ["autodocs"],
 };

@@ -16,7 +16,33 @@ const palette = {
 export const core = createTheme({
   colors: {
     mainBackground: palette.white,
-    cardPrimaryBackground: palette.purplePrimary,
+    cardPrimaryBackground: palette.purpleLight,
+  },
+  spacing: {
+    s: 8,
+    m: 16,
+    l: 24,
+    xl: 40,
+  },
+  textVariants: {
+    header: {
+      fontWeight: "bold",
+      fontSize: 34,
+    },
+    body: {
+      fontSize: 16,
+      lineHeight: 24,
+    },
+    defaults: {
+      // We can define a default text variant here.
+    },
+  },
+});
+
+export const dark = createTheme({
+  colors: {
+    mainBackground: palette.black,
+    cardPrimaryBackground: palette.purpleDark,
   },
   spacing: {
     s: 8,
